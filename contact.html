@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - RGR Logistics Ltd</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="RGR Logistics" class="logo">
+                <span>RGR LOGISTICS LTD</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="locations.html" class="nav-link">Locations</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Get in touch with our logistics experts</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2>Send Us a Message</h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="clearing-forwarding">Clearing & Forwarding</option>
+                                <option value="import-export">Import & Export</option>
+                                <option value="transportation">Transportation</option>
+                                <option value="sourcing">Sourcing</option>
+                                <option value="multiple">Multiple Services</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Please describe your logistics needs..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info-container">
+                    <h2>Get in Touch</h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Our Location</h3>
+                                <p>Nsambya Katwe, Ring Road<br>Kampala, Uganda</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h3>Phone Numbers</h3>
+                                <p><a href="tel:+256705312409">+256 705 312 409</a></p>
+                                <p><a href="tel:+256780861741">+256 780 861 741</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email Address</h3>
+                                <p><a href="mailto:rgrenterpriseItd@gmail.com">rgrenterpriseItd@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h3>Business Hours</h3>
+                                <p>Monday - Friday: 8:00 AM - 6:00 PM<br>
+                                Saturday: 9:00 AM - 2:00 PM<br>
+                                Sunday: Emergency calls only</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Contact Buttons -->
+                    <div class="quick-contact">
+                        <h3>Quick Contact</h3>
+                        <div class="quick-buttons">
+                            <a href="tel:+256705312409" class="quick-btn">
+                                <i class="fas fa-phone"></i> Call Now
+                            </a>
+                            <a href="mailto:rgrenterpriseItd@gmail.com" class="quick-btn">
+                                <i class="fas fa-envelope"></i> Email Us
+                            </a>
+                            <a href="https://wa.me/256705312409" class="quick-btn" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Request Section -->
+    <section class="quote-section">
+        <div class="container">
+            <h2>Request a Quote</h2>
+            <p>Need a detailed quote for your logistics requirements? Fill out our quick quote form.</p>
+            <form class="quote-form" id="quoteForm">
+                <div class="quote-grid">
+                    <div class="form-group">
+                        <label for="origin">Origin Country/City</label>
+                        <input type="text" id="origin" name="origin" placeholder="e.g., Shanghai, China">
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Destination Country/City</label>
+                        <input type="text" id="destination" name="destination" placeholder="e.g., Kampala, Uganda">
+                    </div>
+                    <div class="form-group">
+                        <label for="cargo-type">Cargo Type</label>
+                        <select id="cargo-type" name="cargo-type">
+                            <option value="">Select cargo type</option>
+                            <option value="general">General Cargo</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="textiles">Textiles</option>
+                            <option value="machinery">Machinery</option>
+                            <option value="food">Food Products</option>
+                            <option value="chemicals">Chemicals</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Approximate Weight (kg)</label>
+                        <input type="number" id="weight" name="weight" placeholder="e.g., 1000">
+                    </div>
+                    <div class="form-group">
+                        <label for="transport-mode">Preferred Transport Mode</label>
+                        <select id="transport-mode" name="transport-mode">
+                            <option value="">Select transport mode</option>
+                            <option value="air">Air Freight</option>
+                            <option value="sea">Sea Freight</option>
+                            <option value="land">Land Transport</option>
+                            <option value="multimodal">Multimodal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeline">Required Timeline</label>
+                        <select id="timeline" name="timeline">
+                            <option value="">Select timeline</option>
+                            <option value="urgent">Urgent (1-3 days)</option>
+                            <option value="standard">Standard (1-2 weeks)</option>
+                            <option value="economy">Economy (3-4 weeks)</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="quote-details">Additional Details</label>
+                    <textarea id="quote-details" name="quote-details" rows="3" placeholder="Any special requirements, packaging needs, or additional information..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-calculator"></i> Request Quote
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How long does customs clearance take?</h3>
+                    <p>Customs clearance typically takes 1-3 business days, depending on the complexity of the shipment and documentation completeness.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do you provide door-to-door delivery?</h3>
+                    <p>Yes, we offer comprehensive door-to-door logistics solutions including pickup, transportation, customs clearance, and final delivery.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What documents do I need for international shipping?</h3>
+                    <p>Required documents typically include commercial invoice, packing list, bill of lading, and any specific permits or certificates for your cargo type.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can you handle oversized or special cargo?</h3>
+                    <p>Yes, we have experience handling oversized, heavy, and special cargo including machinery, vehicles, and project cargo with specialized equipment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RGR Logistics Ltd</h3>
+                    <p>"Logistics Expert"</p>
+                    <p>Nsambya Katwe, Ring Road</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> +256 705 312 409</p>
+                    <p><i class="fas fa-phone"></i> +256 780 861 741</p>
+                    <p><i class="fas fa-envelope"></i> rgrenterpriseItd@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li>Clearing & Forwarding</li>
+                        <li>Import & Export</li>
+                        <li>Transportation</li>
+                        <li>Sourcing</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Locations</h3>
+                    <ul>
+                        <li>China</li>
+                        <li>Dubai</li>
+                        <li>India</li>
+                        <li>Turkey</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RGR Logistics Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
