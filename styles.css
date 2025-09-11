@@ -100,6 +100,8 @@ body {
     display: flex;
     align-items: center;
     min-height: 80vh;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-content {
@@ -110,6 +112,8 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1 {
@@ -140,6 +144,17 @@ body {
 .hero-image i {
     font-size: 15rem;
     opacity: 0.3;
+}
+
+.hero-image.hero-map-bg {
+    background-image: url('./map.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 400px;
+    width: 100%;
+    opacity: 0.8;
+    border-radius: 15px;
 }
 
 /* Buttons */
@@ -1039,6 +1054,12 @@ body {
     
     .hero-image i {
         font-size: 8rem;
+    }
+    
+    .hero-image.hero-map-bg {
+        height: 250px;
+        margin-top: 2rem;
+        border-radius: 10px;
     }
     
     .service-content {
