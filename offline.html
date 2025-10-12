@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - RGR Logistics Ltd</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .offline-container {
+            max-width: 500px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .offline-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .retry-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        .retry-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .contact-info {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-item {
+            margin: 10px 0;
+            font-size: 0.95rem;
+        }
+        
+        .contact-item a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .offline-container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            .offline-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">📡</div>
+        <h1>You're Offline</h1>
+        <p>It looks like you've lost your internet connection. Don't worry, you can still browse some of our cached content or try reconnecting.</p>
+        
+        <a href="/" class="retry-btn" onclick="window.location.reload()">
+            🔄 Try Again
+        </a>
+        
+        <a href="/" class="retry-btn">
+            🏠 Go Home
+        </a>
+        
+        <div class="contact-info">
+            <h3>Contact Us Offline</h3>
+            <div class="contact-item">
+                📞 <a href="tel:+256705312409">+256 705 312 409</a>
+            </div>
+            <div class="contact-item">
+                📞 <a href="tel:+256780861741">+256 780 861 741</a>
+            </div>
+            <div class="contact-item">
+                📧 <a href="mailto:rgrenterpriseItd@gmail.com">rgrenterpriseItd@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                📍 Kevina, Kampala, Uganda
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Check for connection and auto-retry
+        function checkConnection() {
+            if (navigator.onLine) {
+                window.location.reload();
+            }
+        }
+        
+        // Listen for online event
+        window.addEventListener('online', checkConnection);
+        
+        // Periodic connection check
+        setInterval(checkConnection, 5000);
+        
+        // Service worker registration check
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.ready.then(registration => {
+                console.log('Service Worker ready in offline page');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://rgr-logistics.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
+
+# Disallow certain paths (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /*.log
+
+# Allow important files
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Block specific bots (optional)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10
+
+# Allow Google, Bing, and other major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
