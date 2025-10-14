@@ -1086,6 +1086,7 @@ a:hover {
     transition: all var(--transition-normal);
     position: relative;
     overflow: hidden;
+    border: 3px solid #FFD700;
 }
 
 .service-card::before {
@@ -1100,17 +1101,18 @@ a:hover {
     transition: transform var(--transition-normal);
 }
 
+/* Hover effects disabled for service cards */
 .service-card:hover::before {
-    transform: scaleX(1);
+    transform: scaleX(0);
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    transform: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .service-card.premium {
-    border: 2px solid var(--accent-color);
+    border: 3px solid #FFD700;
     position: relative;
 }
 
@@ -1539,22 +1541,27 @@ a:hover {
 
 /* Improved Service Cards */
 .service-card {
-    border: 1px solid rgba(30,60,114,0.1);
+    border: 3px solid #FFD700;
     backdrop-filter: blur(10px);
 }
 
+/* Hover effects disabled */
 .service-card:hover {
-    border-color: var(--accent-color);
+    border-color: #FFD700;
+    transform: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .service-card.premium {
     background: linear-gradient(135deg, rgba(255,215,0,0.05) 0%, rgba(255,255,255,1) 100%);
-    border: 2px solid var(--accent-color);
+    border: 3px solid #FFD700;
     box-shadow: 0 15px 40px rgba(255,215,0,0.1);
 }
 
+/* Hover effects disabled for premium cards */
 .service-card.premium:hover {
-    box-shadow: 0 25px 50px rgba(255,215,0,0.2);
+    box-shadow: 0 15px 40px rgba(255,215,0,0.1);
+    transform: none;
 }
 
 /* Enhanced Typography */
@@ -3121,6 +3128,22 @@ a:hover {
 /* Using Bootstrap grid instead of CSS grid */
 .location-section .row {
     margin-top: var(--space-2xl);
+}
+
+.service-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.9) 100%);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    box-shadow: 
+        0 15px 40px rgba(0,0,0,0.06),
+        0 6px 15px rgba(30, 60, 114, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 3px solid #FFD700;
+    backdrop-filter: blur(2px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .location-card {
