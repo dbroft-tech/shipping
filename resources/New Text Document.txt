@@ -10,7 +10,6 @@ human resource supervisor( Mirembe Racheal) bkjjjbkhj.jpg
 ICT supervisor(Frank Equchu) jgjk.jpg
 logo vhjhkjl.jpg
 
-
 bhb.jpg
 bjnm.jpg
 nnknk.jpg
@@ -18,12 +17,20 @@ njnk.jpg
 nbbnb.jpg
 jkjkj.jpg
 
-
 contact banner klmm.jpg
 location banner uhkl.jpg
 services banner fgfhjgj.jpg
 about banner jhkjhllj.jpg
 
 change: Suuna Yusuf to Aijuka Patricia and then remove Aijuka from the receptionist post, Services you should add transportation cargo, sourcing, import and export, international operations: add London
-
 For Suuna Yusuf he should be terminated from the website completely for further notice
+
+php file to manage forms using smtp
+
+<our primaro focus at this moment is the index.html>
+for each card border give it yellow color
+and set all icons colors to yellow
+optimise page loading time mostly on cards
+
+give the background an image background with a slight black tint like what you did on the corousel
+the image is bhjnjj.jpg
