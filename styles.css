@@ -149,6 +149,7 @@ body {
     background-color: var(--background-primary);
     scroll-behavior: smooth;
     overflow-x: hidden;
+    padding-top: 70px; /* Compensate for fixed navbar */
 }
 
 /* Enhanced Typography */
@@ -1741,11 +1742,11 @@ a:hover {
 .about-hero {
     background: var(--gradient-hero);
     color: var(--text-light);
-    padding: 120px 0 80px;
-    min-height: 75vh;
+    padding: 80px 0 40px;
+    position: relative;
+    min-height: 60vh;
     display: flex;
     align-items: center;
-    position: relative;
     overflow: hidden;
 }
 
@@ -1781,7 +1782,7 @@ a:hover {
 
 /* Company Story Section */
 .company-story {
-    padding: 120px 0;
+    padding: 60px 0;
     background: var(--background-primary);
 }
 
@@ -2012,7 +2013,7 @@ a:hover {
 
 /* Mission & Vision */
 .mission-vision {
-    padding: 100px 0;
+    padding: 50px 0;
     background: var(--background-light);
 }
 
@@ -2182,7 +2183,7 @@ a:hover {
 
 /* Leadership Team */
 .leadership-team {
-    padding: 120px 0;
+    padding: 60px 0;
     background: var(--background-light);
 }
 
@@ -2413,6 +2414,28 @@ a:hover {
 
 /* Mobile Responsiveness for About Page */
 @media (max-width: 768px) {
+    /* Reduce section padding on mobile */
+    .about-hero {
+        padding: 60px 0 30px;
+        min-height: 50vh;
+    }
+    
+    .company-story {
+        padding: 40px 0;
+    }
+    
+    .mission-vision {
+        padding: 40px 0;
+    }
+    
+    .leadership-team {
+        padding: 40px 0;
+    }
+    
+    .about-content {
+        padding: 40px 0;
+    }
+    
     .about-hero .hero-content,
     .story-content,
     .mv-grid,
@@ -5051,7 +5074,7 @@ a:hover {
 
 /* Enhanced About Content */
 .about-content {
-    padding: 100px 0;
+    padding: 50px 0;
     background: var(--background-primary);
 }
 
@@ -5772,6 +5795,11 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+    /* Adjust body padding for mobile navbar height */
+    body {
+        padding-top: 60px;
+    }
+    
     .hamburger {
         display: flex;
     }
@@ -5791,6 +5819,11 @@ a:hover {
     
     .navbar.scrolled .nav-container {
         height: 55px;
+    }
+    
+    /* Adjust body padding when navbar is scrolled on mobile */
+    body.navbar-scrolled {
+        padding-top: 55px;
     }
     
     .nav-logo {
