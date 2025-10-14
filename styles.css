@@ -3972,7 +3972,8 @@ a:hover {
 /* Page Banners */
 .contact-banner,
 .locations-banner,
-.services-banner {
+.services-banner,
+.about-banner {
     position: relative;
     min-height: 70vh;
     display: flex;
@@ -4219,11 +4220,21 @@ a:hover {
     line-height: 1;
 }
 
+/* About Banner Company Highlights */
+.company-highlights {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2xl);
+    flex-wrap: wrap;
+    margin-top: var(--space-xl);
+}
+
 /* Mobile Responsiveness for Banners */
 @media (max-width: 768px) {
     .contact-banner,
     .locations-banner,
-    .services-banner {
+    .services-banner,
+    .about-banner {
         min-height: 60vh;
     }
     
@@ -4267,6 +4278,10 @@ a:hover {
     
     .highlight-number {
         font-size: 1.3rem;
+    }
+    
+    .company-highlights {
+        gap: var(--space-lg);
     }
 }
 
