@@ -277,6 +277,12 @@ a:hover {
     transform: translateY(30px);
 }
 
+/* Override fade-in for service cards to ensure visibility */
+.service-card.fade-in:not(.visible) {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
 /* Ripple Effect */
 .ripple {
     position: absolute;
@@ -4870,8 +4876,8 @@ a:hover {
 
 .service-detail {
     margin-bottom: var(--space-3xl);
-    opacity: 0;
-    transform: translateY(50px);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
     transition: all 0.8s ease;
 }
 
@@ -6018,11 +6024,40 @@ a:hover {
 }
 
 /* Initial state for animated elements */
-.service-card,
 .stat-card {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Service cards should be visible by default */
+.service-card {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Ensure all services section elements are visible */
+.main-services,
+.main-services .container,
+.main-services .section-title,
+.main-services .services-grid,
+.services-grid {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Override any animation delays that might hide content */
+.service-card:nth-child(1),
+.service-card:nth-child(2),
+.service-card:nth-child(3),
+.service-card:nth-child(4),
+.service-card:nth-child(5),
+.service-card:nth-child(6),
+.service-card:nth-child(7) {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    animation-delay: 0s !important;
 }
 
 /* Location cards should be visible by default */
