@@ -4318,24 +4318,26 @@ a:hover {
     align-items: center;
     justify-content: flex-start;
     gap: var(--space-md);
-    background: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, #FFD700 0%, #FFC107 50%, #FF8F00 100%);
     padding: var(--space-md) var(--space-lg);
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    border: 2px solid #FFD700;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
     min-width: 180px;
     transition: all 0.3s ease;
 }
 
 .stat-item:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: linear-gradient(135deg, #FFC107 0%, #FF8F00 50%, #FFD700 100%);
     transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
 }
 
 .stat-icon {
-    width: 40px;
-    height: 40px;
-    background: var(--accent-color);
+    width: 45px;
+    height: 45px;
+    background: rgba(30, 60, 114, 0.15);
+    border: 2px solid rgba(30, 60, 114, 0.3);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -4344,8 +4346,8 @@ a:hover {
 }
 
 .stat-icon i {
-    font-size: 1.2rem;
-    color: var(--text-primary);
+    font-size: 1.3rem;
+    color: #1e3c72;
 }
 
 .stat-content {
@@ -4356,17 +4358,18 @@ a:hover {
 }
 
 .stat-number {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #1a202c;
     line-height: 1;
     margin-bottom: 2px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .stat-label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #2d3748;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     line-height: 1;
@@ -5282,11 +5285,12 @@ a:hover {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 3px solid #FFD700;
 }
 
 .location-header {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: white;
+    background: linear-gradient(135deg, #FFD700 0%, #FFC107 50%, #FF8F00 100%);
+    color: #1e3c72;
     padding: 1.5rem 2rem;
     display: flex;
     align-items: center;
@@ -5295,10 +5299,14 @@ a:hover {
 
 .location-header i {
     font-size: 2rem;
+    color: #1e3c72;
 }
 
 .location-header h3 {
     font-size: 1.8rem;
+    color: #1e3c72;
+    font-weight: 800;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .location-content {
@@ -5308,7 +5316,8 @@ a:hover {
 .location-content h4 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #2a5298;
+    color: #FF8F00;
+    font-weight: 700;
 }
 
 .location-content ul {
@@ -5415,11 +5424,12 @@ a:hover {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 3px solid #FFD700;
 }
 
 .advantage i {
     font-size: 3rem;
-    color: #28a745;
+    color: #1e3c72;
     margin-bottom: 1rem;
 }
 
