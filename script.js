@@ -202,7 +202,8 @@ function handleContactSubmission(e) {
         name: formData.get('name'),
         email: formData.get('email'),
         phone: formData.get('phone'),
-        subject: formData.get('subject'),
+        company: formData.get('company'),
+        service: formData.get('service'),
         message: formData.get('message')
     };
     
@@ -212,19 +213,62 @@ function handleContactSubmission(e) {
         return;
     }
     
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(contactData.email)) {
+        showNotification('Please enter a valid email address', 'error');
+        return;
+    }
+    
     // Show loading state
     const submitBtn = e.target.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
     
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
-        showNotification('Message sent successfully! We will get back to you soon.', 'success');
-        e.target.reset();
-        submitBtn.textContent = originalText;
+    // Send data to PHP backend
+    fetch('send_contact.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showNotification(data.message || 'Message sent successfully! We will get back to you within 24 hours.', 'success');
+            e.target.reset();
+            
+            // Track successful form submission
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_submit', {
+                    'event_category': 'contact',
+                    'event_label': 'contact_form_success'
+                });
+            }
+        } else {
+            throw new Error(data.message || 'Failed to send message');
+        }
+    })
+    .catch(error => {
+        console.error('Contact form error:', error);
+        showNotification(error.message || 'Failed to send message. Please try again or contact us directly.', 'error');
+        
+        // Track form submission error
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_error', {
+                'event_category': 'contact',
+                'event_label': 'contact_form_error',
+                'value': error.message
+            });
+        }
+    })
+    .finally(() => {
+        // Restore button state
+        submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
-    }, 2000);
+    });
 }
 
 // Phone number formatting
