@@ -1,11 +1,18 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Sitemap locations
 Sitemap: https://rgr-logistics.com/sitemap.xml
+
+# Host directive (preferred domain)
+Host: https://rgr-logistics.com
 
 # Crawl delay (optional)
 Crawl-delay: 1
+
+# Clean URLs preference
+Disallow: /*?*
+Disallow: /*#*
 
 # Disallow certain paths (if any)
 Disallow: /admin/
