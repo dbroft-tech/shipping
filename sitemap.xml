@@ -31,8 +31,8 @@
         <priority>0.9</priority>
         <image:image>
             <image:loc>https://rgr-logistics.com/assets/images/services-rgr-logistics.jpg</image:loc>
-            <image:title>Logistics Services Uganda - Bonded Warehouse & Clearing</image:title>
-            <image:caption>Comprehensive logistics services including bonded warehouses, clearing & forwarding in Uganda</image:caption>
+            <image:title>Logistics Services Uganda - Bonded Warehouse and Clearing</image:title>
+            <image:caption>Comprehensive logistics services including bonded warehouses, clearing and forwarding in Uganda</image:caption>
         </image:image>
     </url>
     
@@ -45,7 +45,7 @@
         <image:image>
             <image:loc>https://rgr-logistics.com/assets/images/about-rgr-logistics.jpg</image:loc>
             <image:title>About RGR Logistics Ltd - Leading Logistics Company Uganda</image:title>
-            <image:caption>Learn about RGR Logistics Ltd, Uganda's premier logistics company established in 2025</image:caption>
+            <image:caption>Learn about RGR Logistics Ltd, Uganda premier logistics company established in 2025</image:caption>
         </image:image>
     </url>
     
@@ -75,31 +75,31 @@
         </image:image>
     </url>
     
-    <!-- Service-specific pages (if they exist) -->
+    <!-- Service-specific pages -->
     <url>
         <loc>https://rgr-logistics.com/services.html#bonded-warehouses</loc>
-        <lastmod>2025-01-12</lastmod>
+        <lastmod>2025-10-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
         <loc>https://rgr-logistics.com/services.html#clearing-forwarding</loc>
-        <lastmod>2025-01-12</lastmod>
+        <lastmod>2025-10-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
         <loc>https://rgr-logistics.com/services.html#depot-services</loc>
-        <lastmod>2025-01-12</lastmod>
+        <lastmod>2025-10-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
         <loc>https://rgr-logistics.com/services.html#transportation</loc>
-        <lastmod>2025-01-12</lastmod>
+        <lastmod>2025-10-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
