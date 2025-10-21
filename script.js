@@ -154,68 +154,26 @@ function initContactForms() {
     });
 }
 
-// Handle quote form submission
+// Handle quote form submission with Formspree
 function handleQuoteSubmission(e) {
     e.preventDefault();
     
     const formData = new FormData(e.target);
-    const quoteData = {
-        origin: formData.get('origin'),
-        destination: formData.get('destination'),
-        cargoType: formData.get('cargo-type'),
-        weight: formData.get('weight'),
-        transportMode: formData.get('transport-mode'),
-        timeline: formData.get('timeline'),
-        details: formData.get('quote-details'),
-        name: formData.get('name'),
-        email: formData.get('email'),
-        phone: formData.get('phone')
-    };
     
     // Validate required fields
-    if (!quoteData.origin || !quoteData.destination || !quoteData.name || !quoteData.email) {
-        showNotification('Please fill in all required fields', 'error');
-        return;
-    }
+    const origin = formData.get('origin');
+    const destination = formData.get('destination');
+    const name = formData.get('name');
+    const email = formData.get('email');
     
-    // Show loading state
-    const submitBtn = e.target.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
-    
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
-        showNotification('Quote request sent successfully! We will contact you within 24 hours.', 'success');
-        e.target.reset();
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }, 2000);
-}
-
-// Handle contact form submission
-function handleContactSubmission(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(e.target);
-    const contactData = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        company: formData.get('company'),
-        service: formData.get('service'),
-        message: formData.get('message')
-    };
-    
-    // Validate required fields
-    if (!contactData.name || !contactData.email || !contactData.message) {
+    if (!origin || !destination || !name || !email) {
         showNotification('Please fill in all required fields', 'error');
         return;
     }
     
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(contactData.email)) {
+    if (!emailRegex.test(email)) {
         showNotification('Please enter a valid email address', 'error');
         return;
     }
@@ -226,18 +184,89 @@ function handleContactSubmission(e) {
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
     
-    // Send data to PHP backend
-    fetch('send_contact.php', {
+    // Send to Formspree
+    fetch('https://formspree.io/f/manpzlww', {
         method: 'POST',
+        body: formData,
         headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(contactData)
+            'Accept': 'application/json'
+        }
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            showNotification(data.message || 'Message sent successfully! We will get back to you within 24 hours.', 'success');
+    .then(response => {
+        if (response.ok) {
+            showNotification('Quote request sent successfully! We will contact you within 24 hours.', 'success');
+            e.target.reset();
+            
+            // Track successful form submission
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_submit', {
+                    'event_category': 'quote',
+                    'event_label': 'quote_form_success'
+                });
+            }
+        } else {
+            throw new Error('Failed to send quote request');
+        }
+    })
+    .catch(error => {
+        console.error('Quote form error:', error);
+        showNotification('Failed to send quote request. Please try again or contact us directly.', 'error');
+        
+        // Track form submission error
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_error', {
+                'event_category': 'quote',
+                'event_label': 'quote_form_error'
+            });
+        }
+    })
+    .finally(() => {
+        // Restore button state
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    });
+}
+
+// Handle contact form submission with Formspree
+function handleContactSubmission(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    
+    // Validate required fields
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+    
+    if (!name || !email || !message) {
+        showNotification('Please fill in all required fields', 'error');
+        return;
+    }
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showNotification('Please enter a valid email address', 'error');
+        return;
+    }
+    
+    // Show loading state
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+    
+    // Send to Formspree
+    fetch('https://formspree.io/f/xblzeznb', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            showNotification('Message sent successfully! We will get back to you within 24 hours.', 'success');
             e.target.reset();
             
             // Track successful form submission
@@ -248,19 +277,18 @@ function handleContactSubmission(e) {
                 });
             }
         } else {
-            throw new Error(data.message || 'Failed to send message');
+            throw new Error('Failed to send message');
         }
     })
     .catch(error => {
         console.error('Contact form error:', error);
-        showNotification(error.message || 'Failed to send message. Please try again or contact us directly.', 'error');
+        showNotification('Failed to send message. Please try again or contact us directly.', 'error');
         
         // Track form submission error
         if (typeof gtag !== 'undefined') {
             gtag('event', 'form_error', {
                 'event_category': 'contact',
-                'event_label': 'contact_form_error',
-                'value': error.message
+                'event_label': 'contact_form_error'
             });
         }
     })
