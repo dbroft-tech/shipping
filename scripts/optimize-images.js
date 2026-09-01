@@ -25,7 +25,7 @@ const supportedFormats = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff'];
 
 // Image metadata for proper naming and alt texts
 const imageMetadata = {
-  'vhjhkjl.jpg': {
+  'rgr-logo.png': {
     name: 'rgr-logistics-logo',
     alt: 'RGR Logistics Ltd company logo',
     description: 'Official logo of RGR Logistics Ltd'

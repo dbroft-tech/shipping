@@ -1,9 +1,9 @@
 // RGR Logistics Service Worker
 // Provides offline functionality and caching
 
-const CACHE_NAME = 'rgr-logistics-v1.0.0';
-const STATIC_CACHE = 'rgr-static-v1.0.0';
-const DYNAMIC_CACHE = 'rgr-dynamic-v1.0.0';
+const CACHE_NAME = 'rgr-logistics-v2.0.2';
+const STATIC_CACHE = 'rgr-static-v2.0.2';
+const DYNAMIC_CACHE = 'rgr-dynamic-v2.0.2';
 
 // Files to cache immediately
 const STATIC_FILES = [
@@ -16,8 +16,6 @@ const STATIC_FILES = [
   '/styles.css',
   '/script.js',
   '/manifest.json',
-  '/assets/icons/icon-192x192.png',
-  '/assets/icons/icon-512x512.png',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js'
@@ -66,58 +64,51 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch event - serve cached content when offline
+// Fetch event - network-first, falling back to cache only when offline
 self.addEventListener('fetch', event => {
   const { request } = event;
-  
+
   // Skip non-GET requests
   if (request.method !== 'GET') {
     return;
   }
-  
+
   // Skip chrome-extension requests
   if (request.url.startsWith('chrome-extension://')) {
     return;
   }
-  
+
   event.respondWith(
-    caches.match(request)
-      .then(cachedResponse => {
-        // Return cached version if available
-        if (cachedResponse) {
-          return cachedResponse;
+    fetch(request)
+      .then(networkResponse => {
+        // Check if response is valid
+        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+          return networkResponse;
         }
-        
-        // Otherwise, fetch from network
-        return fetch(request)
-          .then(networkResponse => {
-            // Check if response is valid
-            if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-              return networkResponse;
+
+        // Clone the response and update the cache with the fresh copy,
+        // so offline fallback stays reasonably up to date
+        const responseToCache = networkResponse.clone();
+        if (shouldCacheDynamically(request.url)) {
+          caches.open(DYNAMIC_CACHE)
+            .then(cache => {
+              cache.put(request, responseToCache);
+            });
+        }
+
+        return networkResponse;
+      })
+      .catch(() => {
+        // Network unavailable - fall back to cache
+        return caches.match(request)
+          .then(cachedResponse => {
+            if (cachedResponse) {
+              return cachedResponse;
             }
-            
-            // Clone the response
-            const responseToCache = networkResponse.clone();
-            
-            // Cache dynamic content
-            if (shouldCacheDynamically(request.url)) {
-              caches.open(DYNAMIC_CACHE)
-                .then(cache => {
-                  cache.put(request, responseToCache);
-                });
-            }
-            
-            return networkResponse;
-          })
-          .catch(() => {
+
             // Return offline page for navigation requests
             if (request.destination === 'document') {
               return caches.match('/offline.html');
-            }
-            
-            // Return offline image for image requests
-            if (request.destination === 'image') {
-              return caches.match('/assets/icons/offline-image.png');
             }
           });
       })
@@ -256,8 +247,8 @@ self.addEventListener('push', event => {
   
   const options = {
     body: event.data ? event.data.text() : 'New update from RGR Logistics',
-    icon: '/assets/icons/icon-192x192.png',
-    badge: '/assets/icons/icon-96x96.png',
+    icon: '/resources/rgr-logo.png',
+    badge: '/resources/rgr-logo.png',
     vibrate: [200, 100, 200],
     data: {
       url: '/'
@@ -266,12 +257,12 @@ self.addEventListener('push', event => {
       {
         action: 'open',
         title: 'Open Website',
-        icon: '/assets/icons/icon-96x96.png'
+        icon: '/resources/rgr-logo.png'
       },
       {
         action: 'close',
         title: 'Close',
-        icon: '/assets/icons/icon-96x96.png'
+        icon: '/resources/rgr-logo.png'
       }
     ]
   };

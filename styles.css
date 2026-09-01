@@ -479,6 +479,7 @@ a:hover {
     z-index: 2;
     height: 100%;
     padding: 0 8px;
+    background-color: white;
 }
 
 .nav-logo:hover {
@@ -488,19 +489,21 @@ a:hover {
 }
 
 .logo {
-    width: 48px;
-    height: 48px;
-    margin-right: 14px;
-    background: var(--background-primary);
-    border-radius: var(--radius-full);
+    height: 50px;
+    width: auto;
+    max-width: 160px;
+    margin-right: 0;
+    background: transparent;
+    border-radius: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: none;
     transition: all var(--transition-normal);
     position: relative;
-    overflow: hidden;
-    border: 2px solid rgba(255,255,255,0.1);
+    overflow: visible;
+    border: none;
+    object-fit: contain;
 }
 
 .logo::before {
@@ -520,8 +523,7 @@ a:hover {
 }
 
 .nav-logo:hover .logo {
-    transform: rotate(5deg) scale(1.05);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    transform: scale(1.05);
 }
 
 .nav-menu {
@@ -3817,6 +3819,44 @@ a:hover {
     overflow: hidden;
 }
 
+.video-showcase {
+    padding: 80px 0;
+    background: var(--background-primary);
+}
+
+.video-showcase-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.video-showcase-player {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg, 12px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    display: block;
+    background: #000;
+}
+
+.video-showcase-caption {
+    margin-top: 20px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+    .video-showcase {
+        padding: 50px 0;
+    }
+
+    .video-showcase-caption {
+        font-size: 1.05rem;
+        padding: 0 10px;
+    }
+}
+
 .services-overview {
     padding: 120px 0;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
@@ -5853,9 +5893,9 @@ a:hover {
     }
     
     .logo {
-        width: 40px;
-        height: 40px;
-        margin-right: 10px;
+        height: 38px;
+        max-width: 120px;
+        margin-right: 0;
     }
     
     .nav-menu {
